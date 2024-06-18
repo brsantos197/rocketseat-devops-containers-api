@@ -9,9 +9,9 @@ jobs:
   build:
     name: Build and Push
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [16, 18, 20]
+    # strategy:
+    #   matrix:
+    #     node: [16, 18, 20]
     steps:
       - uses: actions/checkout@v4
 
@@ -21,10 +21,12 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Setup Node | ${{ matrix.node }}
+      # - name: Setup Node | ${{ matrix.node }}
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          # node-version: ${{ matrix.node }}
+          node-version: 18
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm run test
@@ -41,8 +43,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build docker image
-        run: docker build -t brsantos197/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: brsantos197/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }},brsantos197/rocketseat-ci-api:latest
 
-      - name: Push image
-        run: docker push brsantos197/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
+      # - name: Build docker image
+      #   run: docker build -t brsantos197/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
+
+      # - name: Push image
+      #   run: docker push brsantos197/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
