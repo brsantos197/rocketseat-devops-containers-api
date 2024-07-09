@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.0...v1.0.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* ci aws ([50d014c](https://github.com/brsantos197/rocketseat-devops-containers-api/commit/50d014ce36ec2cd50796a0eb6e45c263391ee1f0))
+
 # 1.0.0 (2024-07-09)
 
 
