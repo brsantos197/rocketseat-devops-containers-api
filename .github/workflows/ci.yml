@@ -7,15 +7,14 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   build:
     name: Build and Push
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     node: [16, 18, 20]
     steps:
       - uses: actions/checkout@v4
 
@@ -25,15 +24,18 @@ jobs:
           version: 8
           run_install: false
 
-      # - name: Setup Node | ${{ matrix.node }}
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          # node-version: ${{ matrix.node }}
           node-version: 18
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm run test
+
+      - name: Semantic release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Generate tag
         id: generate_tag
@@ -44,7 +46,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::905418438733:role/ecr-role
+          role-to-assume: ${{ secrets.ERC_ROLE }}
           aws-region: us-east-2
 
       - name: Login to AWS ECR
@@ -70,7 +72,7 @@ jobs:
         with:
           service: rocketseat-api
           image: ${{ steps.build-docker-image.outputs.image }}
-          access-role-arn: arn:aws:iam::905418438733:role/app-runner-role
+          access-role-arn: ${{ secrets.APP_RUNNER_ROLE }}
           region: us-east-2
           cpu: 1
           memory: 2
