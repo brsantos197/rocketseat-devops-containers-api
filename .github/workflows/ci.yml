@@ -46,7 +46,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.ERC_ROLE }}
+          role-to-assume: arn:aws:iam::905418438733:role/ecr-role
           aws-region: us-east-2
 
       - name: Login to AWS ECR
@@ -72,7 +72,7 @@ jobs:
         with:
           service: rocketseat-api
           image: ${{ steps.build-docker-image.outputs.image }}
-          access-role-arn: ${{ secrets.APP_RUNNER_ROLE }}
+          access-role-arn: arn:aws:iam::905418438733:role/app-runner-role
           region: us-east-2
           cpu: 1
           memory: 2
