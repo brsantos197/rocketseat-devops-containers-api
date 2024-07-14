@@ -60,7 +60,7 @@ jobs:
           TAG: ${{ steps.generate_tag.outputs.sha }}
         run: |
           echo $REGISTRY/rocketseat-ci:$TAG
-          cat .npmrc
+          ls -la
           docker builder prune
           docker build --no-cache -t $REGISTRY/rocketseat-ci:$TAG .
           docker tag $REGISTRY/rocketseat-ci:$TAG $REGISTRY/rocketseat-ci:latest
