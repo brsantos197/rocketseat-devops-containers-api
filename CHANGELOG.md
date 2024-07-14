@@ -4,6 +4,14 @@
 ### Bug Fixes
 
 * docker tags ([cdb1847](https://github.com/brsantos197/rocketseat-devops-containers-api/commit/cdb18475110fee70e0ad7bf6621dfb5e9680fe12))
+* remove cache ([cb7be99](https://github.com/brsantos197/rocketseat-devops-containers-api/commit/cb7be9954dfeb07a1060c029058166fd8365c9fe))
+
+## [1.0.2](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.1...v1.0.2) (2024-07-14)
+
+
+### Bug Fixes
+
+* docker tags ([cdb1847](https://github.com/brsantos197/rocketseat-devops-containers-api/commit/cdb18475110fee70e0ad7bf6621dfb5e9680fe12))
 
 ## [1.0.1](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.0...v1.0.1) (2024-07-09)
 
