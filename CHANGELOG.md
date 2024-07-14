@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.2...v1.0.3) (2024-07-14)
+
+
+### Bug Fixes
+
+* add semantic releases ([cbfd2f2](https://github.com/brsantos197/rocketseat-devops-containers-api/commit/cbfd2f27047a2f0cf7afcd1b9500b39d39d5247f))
+
 ## [1.0.2](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.1...v1.0.2) (2024-07-14)
 
 
