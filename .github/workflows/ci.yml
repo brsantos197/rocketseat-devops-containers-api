@@ -32,10 +32,7 @@ jobs:
       - run: pnpm install
       - run: pnpm run test
 
-      # - name: Semantic release
-      #   uses: cycjimmy/semantic-release-action@v4
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      
 
       - name: Generate tag
         id: generate_tag
@@ -68,6 +65,11 @@ jobs:
           IMAGE=$(echo $REGISTRY/rocketseat-ci:$TAG)
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
+      - name: Semantic release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          
       - name: Deploy to app runner
         id: deploy-app-runner
         uses: awslabs/amazon-app-runner-deploy@main
