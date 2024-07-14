@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.3...v1.0.4) (2024-07-14)
+
+
+### Bug Fixes
+
+* ci vars ([288821d](https://github.com/brsantos197/rocketseat-devops-containers-api/commit/288821d6a522dd12e336c87726ac5a188de7f8e4))
+
 ## [1.0.3](https://github.com/brsantos197/rocketseat-devops-containers-api/compare/v1.0.2...v1.0.3) (2024-07-14)
 
 
